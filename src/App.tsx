@@ -4,7 +4,7 @@ import { Icon } from "./components/Icon";
 import { Brand } from "./components/Brand";
 import { useScrolled } from "./hooks/useScrolled";
 import { useParallax } from "./hooks/useParallax";
-import { bentoTiles, capabilities, modules, navLinks, pullQuote, roles, stats } from "./content";
+import { bentoTiles, capabilities, featureCards, modules, navLinks, pullQuote, roles, stats } from "./content";
 
 function App() {
   const scrolled = useScrolled(40);
@@ -43,15 +43,16 @@ function App() {
             </Reveal>
             <Reveal delay={80}>
               <h1 className="hero__headline">
-                Your whole church.
+                Your church's
                 <br />
-                <span className="hero__headline-accent">One app.</span>
+                <span className="hero__headline-accent">operating system.</span>
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="lede">
-                Gather replaces the pile of separate tools with one platform — a branded app your members
-                actually open, and a realtime dashboard your staff actually use.
+                Gather replaces the pile of separate tools with one platform: a branded app your members
+                actually open, a realtime dashboard your staff actually use, and a landing site that helps
+                you sell the system.
               </p>
             </Reveal>
             <Reveal delay={220}>
@@ -93,16 +94,46 @@ function App() {
 
       <Marquee items={modules} />
 
-      <section className="section" id="features">
+      <section className="section section--feature-grid" id="features">
         <div className="shell">
           <Reveal>
             <div className="section__heading">
-              <p className="eyebrow">What it includes</p>
-              <h2>Everything church operations, in one system.</h2>
+              <p className="eyebrow">Buyer features</p>
+              <h2>Everything a church needs to run members, ministry, and growth.</h2>
+              <p className="lede">
+                Lead with the features people care about most: a polished mobile app, a powerful admin console,
+                and the workflows that keep the church organized without extra tools or extra training.
+              </p>
             </div>
           </Reveal>
 
-          <div className="bento">
+          <div className="feature-grid">
+            {featureCards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 45} className={`feature-card ${i < 3 ? "feature-card--wide" : ""}`}>
+                <span className="feature-card__icon">
+                  <Icon name={card.icon} />
+                </span>
+                <h3>{card.title}</h3>
+                <p>{card.body}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={featureCards.length * 45} className="feature-banner">
+            <div>
+              <p className="eyebrow">Built for trust</p>
+              <h3>Role-based permissions, realtime updates, and clear ownership from day one.</h3>
+            </div>
+            <div className="feature-banner__roles">
+              {roles.map((role) => (
+                <span key={role} className="pill">
+                  {role}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="bento bento--secondary">
             {bentoTiles.map((tile, i) => (
               <Reveal key={tile.id} delay={i * 60} className={`bento__tile bento__tile--${tile.id}`}>
                 {tile.kind === "image" ? (
@@ -150,11 +181,11 @@ function App() {
         <div className="shell suite">
           <Reveal className="suite-copy">
             <p className="eyebrow">Product suite</p>
-            <h2>One product, three surfaces.</h2>
+            <h2>Three surfaces. One source of truth.</h2>
             <p>
-              The landing site brings people in. The dashboard runs your operations. The member app keeps everyone
-              connected. All three speak the same visual language, backed by a single API — so the brand feels like
-              one product, not three.
+              The landing site brings buyers in. The dashboard runs your operations. The member app keeps everyone
+              connected. All three speak the same visual language, backed by one API, so the system feels premium
+              instead of stitched together.
             </p>
             <div className="pill-grid">
               {modules.map((mod) => (
@@ -168,8 +199,8 @@ function App() {
           <Reveal className="suite-photo" delay={120}>
             <img src="/images/pexels-caleboquendo-34597163.jpg" alt="A member kneeling in worship, colorful stage lighting behind him" />
             <div className="suite-photo__card">
-              <strong>Realtime</strong>
-              <span>Every check-in, gift, and message syncs instantly across web and mobile.</span>
+              <strong>Buyer-ready story</strong>
+              <span>Sell the system with a landing page that shows the app, dashboard, and outcomes up front.</span>
             </div>
           </Reveal>
         </div>
