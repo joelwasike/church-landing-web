@@ -135,7 +135,7 @@ img {
 }
 
 .brand__logo {
-  width: min(200px, 46vw);
+  width: 72px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -960,7 +960,7 @@ img {
   }
 
   .brand__logo {
-    width: 136px;
+    width: 64px;
   }
 
   .nav__inner {
